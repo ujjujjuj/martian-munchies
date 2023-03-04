@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "sequelize": "^6.29.0",
+    "sequelize-cockroachdb": "^6.0.5",
+    "web3": "^1.8.2"
+  },
+  "name": "srv",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
