@@ -1,10 +1,13 @@
 import { CartSection } from "@/components/CartSection";
 import Head from "next/head";
+import { useState } from "react";
+
 
 export default function Cart({
     authed,
     setAuthed
 }) {
+
     return (
         <>
             <Head>
