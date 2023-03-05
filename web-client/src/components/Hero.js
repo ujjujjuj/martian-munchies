@@ -5,7 +5,7 @@ export const Hero = () => {
         <>
             <div className={`flex flex-col justify-center items-center w-full h-[100vh] text-white ${styles.hero}`}>
 
-                <Image src="/assets/mars-img.png" width={800} height={800} />
+                <Image src="/assets/mars-img.png" width={800} height={450} />
                 <h1>MARTIAN<br />MUNCHIES</h1>
                 <p>EPITOME OF EXQUISITE CUISINE</p>
 

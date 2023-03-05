@@ -2,6 +2,7 @@
     height: 100vh;
     padding-block: 6em;
     padding-inline: 5em;
+    margin-bottom: 4em;
 }
 
 .section h1 {
@@ -19,8 +20,6 @@
     color: black;
 }
 
-
-
 .overlay {
     position: absolute;
     inset: -1px;
@@ -32,4 +31,8 @@
     transition: all 0.3s ease;
     opacity: 0;
     justify-content: center;
+}
+
+.nft {
+    transition: all 0.3s ease;
 }
