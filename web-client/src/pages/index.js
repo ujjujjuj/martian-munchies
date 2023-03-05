@@ -1,3 +1,4 @@
+import { Explore } from '@/components/Explore';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
 import { Mrq } from '@/components/Marquee';
@@ -7,12 +8,14 @@ import Cookies from 'js-cookie';
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import {default as _nfts} from "../../../nftdat.json";
+import { default as _nfts } from "../../../nftdat.json";
+import { default as _items } from "../../../dat.json";
 
 export default function Home({
   authed,
   setAuthed,
-  nfts
+  nfts,
+  items
 }) {
   return (
     <>
@@ -25,7 +28,7 @@ export default function Home({
       <Hero />
       <Mrq />
       <Nfts nfts={nfts} />
-      <Footer />
+      <Explore items={items} />
     </>
   )
 }
@@ -33,6 +36,7 @@ export async function getServerSideProps(context) {
   // const items = await Item.findAll();
 
   return {
-    props: { nfts: _nfts.items }, //
+    props: { nfts: _nfts.items, items: _items.items }, //
   };
 }
+

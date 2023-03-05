@@ -7,53 +7,36 @@ import { Autoplay, EffectCoverflow, Pagination } from "swiper";
 import { NFT } from "./NFT";
 
 export const Nfts = ({ nfts }) => {
-  const pagination = {
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<span class="' + className + '">' + "</span>";
-    },
-  };
+    const pagination = {
+        clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + "</span>";
+        },
+    };
 
-  return (
-    <>
-      <div className={styles.section}>
-        <h1>
-          LIMITED EDITION <span>NFTS</span> :
-        </h1>
-        <Swiper
-          className={styles.swiper}
-          slidesPerView={3}
-          pagination={pagination}
-          centeredSlides={true}
-          loop={true}
-          draggable={false}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          spaceBetween={80}
-          modules={[Pagination, Autoplay]}
-        >
-          {nfts.map((nft, idx) => (
-            <SwiperSlide key={idx}>
-              <NFT src={nft.image} />
-            </SwiperSlide>
-          ))}
-          {/* 
-          <SwiperSlide>
-            <NFT />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NFT />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NFT />
-          </SwiperSlide>
-          <SwiperSlide>
-            <NFT />
-          </SwiperSlide> */}
-        </Swiper>
-      </div>
-    </>
-  );
-};
+    return (
+        <>
+            <div className={styles.section}>
+                <h1>
+                    LIMITED EDITION <span>NFTS</span> :
+                </h1>
+                <Swiper
+                    className={styles.swiper}
+                    pagination={pagination}
+                    loop={true}
+                    draggable={false}
+                    spaceBetween={80}
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    modules={[Pagination]}
+                >
+                    {nfts.map((nft, idx) => (
+                        <SwiperSlide key={idx}>
+                            <NFT src={nft.image} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+        </>
+    )
+}

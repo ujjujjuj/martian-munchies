@@ -26,7 +26,6 @@ export default function Menu({ authed, setAuthed, items }) {
 
 export async function getServerSideProps(context) {
   const items = await Item.findAll();
-
   return {
     props: { items: _items.items }, //
   };

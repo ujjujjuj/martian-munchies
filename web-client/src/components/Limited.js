@@ -17,6 +17,7 @@ export const Limited = ({ item }) => {
           name={item.name}
           price={item.price}
           src={item.image}
+          sm={true}
           desc={item.description}
         />{" "}
       </section>
