@@ -1,11 +1,29 @@
+import { CartContext } from "@/context/cartContext";
 import Image from "next/image";
+import { useContext, useState } from "react";
 
-export const MenuItem = ({ name, price, src, sm, desc }) => {
+export const MenuItem = ({ name, price, src, sm, desc, id }) => {
+    const { setCartItem } = useContext(CartContext);
+    const [addding, setAdding] = useState(false);
     return (
         <>
-            <div className={`flex flex-col justify-between items-center mx-auto relative px-12 bg-black py-5 mt-6 ${sm ? " border-[#FFD747] w-[20em]" : "w-full border-white"}  border-[1px]`}>
-                <div className=" bg-black bg-opacity-80 w-[100.5%] opacity-0 hover:opacity-100 ease-in cursor-pointer transition-all -top-0.5 -bottom-0.5 text-center absolute mx-auto flex justify-center items-center z-10 font-medium tracking-[0.585em]">
-                    ADD TO CART
+            <div className={`flex flex-col justify-between items-center mx-auto relative px-12 bg-black py-5 mt-6 ${sm ? " border-[#FFD747] w-[20em]" : "w-full border-white"}  border-[1px]`} onClick={
+                () => {
+                    setCartItem({
+                        name,
+                        price,
+                        src,
+                        id,
+                        desc
+                    }, 1)
+                    setAdding(true)
+                    setTimeout(() => {
+                        setAdding(false)
+                    }, 1000);
+                }
+            }>
+                <div className=" bg-black bg-opacity-80 w-[101%] opacity-0 hover:opacity-100 ease-in cursor-pointer transition-all -top-0.5 -bottom-0.5 text-center absolute mx-auto flex justify-center items-center z-10 font-medium tracking-[0.585em]">
+                    {addding ? "ADDED" : "ADD TO CART"}
                 </div>
                 <Image
                     src={src}

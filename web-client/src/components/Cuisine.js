@@ -11,6 +11,7 @@ export const Cuisine = ({ items }) => {
                     {items.map((item, idx) => (
                         <MenuItem
                             key={idx}
+                            id={item.id}
                             name={item.name}
                             price={item.price}
                             src={item.image}

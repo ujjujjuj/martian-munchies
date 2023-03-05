@@ -16,7 +16,7 @@ export default function Profile({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <section className="mt-28 flex flex-col items-start px-20">
-                <div className="flex flex-row"> 
+                <div className="flex flex-row">
                     <h1 className="font-[akira] text-4xl text-center tracking-wider">Hey, {user.username}</h1>
                 </div>
                 <Orders />

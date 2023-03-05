@@ -2,7 +2,7 @@ import axios from "axios";
 import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { AppContext } from "./context/authContext";
+import { AppContext } from "../context/authContext";
 import { useRouter } from "next/router";
 import { BiUserCircle, BiLockAlt } from "react-icons/bi";
 import { HiOutlineAtSymbol } from "react-icons/hi";
@@ -35,13 +35,13 @@ export default function Login({
         });
     }
 
-    // useEffect(() => {
-    //     const authToken = Cookies.get("authToken");
-    //     if (authToken) {
-    //         setAuthed(true);
-    //         router.replace("/");
-    //     }
-    // }, []);
+    useEffect(() => {
+        const authToken = Cookies.get("authToken");
+        if (authToken) {
+            setAuthed(true);
+            router.replace("/");
+        }
+    }, []);
 
     return (
         <>

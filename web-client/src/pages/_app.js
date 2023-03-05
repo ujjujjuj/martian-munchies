@@ -1,7 +1,8 @@
 import '@/styles/globals.css'
 import { useContext, useEffect, useState } from 'react'
 import Cookies from "js-cookie";
-import AppProvider, { AppContext } from './context/authContext';
+import AppProvider, { AppContext } from '../context/authContext';
+import CartProvider from '../context/cartContext';
 import { Navbar } from '@/components/Navbar';
 import axios from 'axios';
 import { Notyf } from 'notyf';
@@ -39,14 +40,17 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (<AppProvider setAuthed={setAuthed} setUser={setUser}>
-    <Navbar authed={authed} />
-    <Component
-      authed={authed}
-      user={user}
-      setAuthed={setAuthed}
-      setUser={setUser}
-      {...pageProps}
-    />
-    <Footer />
+    <CartProvider>
+      <>
+        <Navbar authed={authed} />
+        <Component
+          authed={authed}
+          user={user}
+          setAuthed={setAuthed}
+          setUser={setUser}
+          {...pageProps}
+        />
+      </>
+    </CartProvider>
   </AppProvider>)
 }

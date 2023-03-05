@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useContext, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import { AppContext } from "./context/authContext";
+import { AppContext } from "../context/authContext";
 import { BiUserCircle, BiLockAlt } from 'react-icons/bi';
 import Image from "next/image";
 import Link from "next/link";

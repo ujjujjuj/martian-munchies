@@ -1,8 +1,9 @@
 export const Footer = () => {
     return (
         <>
-            <footer className="flex flex-col justify-center items-center w-full py-3  text-white bg-black">
-                © 2050 Mars Munchies 
+            <div className="flex-1"></div>
+            <footer className="flex flex-col justify-center items-center w-full py-3 mt-auto  text-white bg-black">
+                © 2050 Martian Munchies
             </footer>
         </>
     )
