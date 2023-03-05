@@ -16,7 +16,7 @@ export const Nfts = ({ nfts }) => {
 
     return (
         <>
-            <div className={styles.section}>
+            <div className={styles.section} id="nft">
                 <h1>
                     LIMITED EDITION <span>NFTS</span> :
                 </h1>

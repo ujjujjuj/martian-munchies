@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useContext, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import { AppContext } from "./context/authContext";
+import { AppContext } from "../context/authContext";
 import { BiUserCircle, BiLockAlt } from 'react-icons/bi';
 import Image from "next/image";
 import Link from "next/link";
@@ -52,7 +52,7 @@ export default function Login({
                 type: 'error',
                 message: err.response.data.error,
             });
-        });;
+        });
     }
 
     useEffect(() => {
@@ -71,6 +71,12 @@ export default function Login({
                 console.log(res.data);
                 setUser(res.data.user);
                 router.replace("/profile");
+            }).catch((err) => {
+                console.log(err.response.data.error)
+                notyf.current.open({
+                    type: 'error',
+                    message: "Wallet not connected to any account",
+                });
             });
         } else if (authToken) {
             setAuthed(true);

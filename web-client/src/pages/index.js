@@ -20,7 +20,7 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>Martian munchies</title>
+        <title>Martian Munchies</title>
         <meta name="description" content="Your local mars cafe" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -29,6 +29,7 @@ export default function Home({
       <Mrq />
       <Nfts nfts={nfts} />
       <Explore items={items} />
+      <Footer />
     </>
   )
 }

@@ -14,6 +14,7 @@ export const Explore = ({ items }) => {
                             name={item.name}
                             price={item.price}
                             src={item.image}
+                            id={item.id}
                             desc={item.description}
                         />
                     ))
