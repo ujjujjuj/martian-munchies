@@ -1,6 +1,7 @@
 const express = require("express");
 const Web3 = require("web3");
 const fs = require("fs");
+const { Order, Item, NFT, User } = require("../db");
 
 const router = express.Router();
 
@@ -10,24 +11,49 @@ const contract = new web3.eth.Contract(
   process.env.CONTRACT_ADDRESS
 );
 
+let ownerAccount;
 let accounts;
 web3.eth.getAccounts().then((ac) => (accounts = ac));
 (async () => {
   // console.log(await web3.eth.getBalance((await web3.eth.getAccounts())[0]));
+  ownerAccount = await web3.eth.accounts.privateKeyToAccount(
+    "0x" + process.env.WALLET_PRIVATE_KEY
+  );
 })();
 
-router.post("/new", () => {
+router.post("/new", async () => {
   // calculate order value from cart items
+  const itemIds = Object.keys(req.body.cart);
+  const items = await Item.findAll({ where: { id: itemIds } });
+
+  const value = itemIds.reduce(
+    (prev, id) =>
+      items.find((x) => x.id == id).price * req.body.cart[id] + prev,
+    0
+  );
+
   // create new order object with paid = fanlse
-  // return order id and
+  const order = await Order.create({
+    user: req.body.user,
+    cart: JSON.stringify(req.body.cart),
+    isPaid: false,
+    value,
+  });
+
+  await order.save();
+
+  // return order id
+  return res.json({ id: order.id });
 });
 
-router.post("/status", () => {
+router.post("/status", async () => {
   // return Order.findOne({id:req.body.orderId}).paid
+  res.json({ confirmed: (await Order.findOne({ id: req.body.id })).isPaid });
 });
 
-router.post("/all", () => {
+router.post("/all", async () => {
   // return orders
+  res.json({ orders: await Order.findAll() });
 });
 
 // console.log( });
@@ -43,11 +69,32 @@ router.post("/test", (req, res) => {
 // set paid = true for that order
 // check if a limited edition item is in the order, if yes then check the number of items sold
 // if number of items < threshold then award the user with an NFT of that item
-contract.events["Order"]({ fromBlock: "earliest" }).on("data", (event) => {
-  console.log("ORDER EVENT");
+contract.events.Order({ fromBlock: "earliest" }).on("data", async (event) => {
   console.log(event);
-  const { orderId, amount } = event.returnValues;
-  console.log(orderId, amount);
+  const { orderId, amount, from } = event.returnValues;
+  const order = await Order.findOne({ id: parseInt(orderId) });
+  if (order.value !== parseInt(amount)) {
+    console.log(
+      `Invalid amount received for order-${orderId}: received ${amount} but expected ${order.value}`
+    );
+    return;
+  }
+
+  orderId.isPaid = true;
+  const cart = JSON.stringify(order.cart);
+
+  const items = await Item.findAll({ where: { id: Object.keys(cart) } });
+  for (const item in items) {
+    if (item.isLimitedEdition && item.supply < 42) {
+      item.supply++;
+      item.save();
+
+      // MINT NFT
+      contract.methods.awardNFT(from, item.id, { from: ownerAccount });
+    }
+  }
+
+  await order.save();
 });
 
 module.exports = router;
