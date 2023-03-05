@@ -44,7 +44,7 @@ export default function handler(req, res) {
 
             res.status(200).json({
                 authToken, user: {
-                    ...body, password: undefined
+                    ...user.dataValues, password: undefined
                 }
             })
             res.end();

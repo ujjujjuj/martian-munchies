@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Image from "next/image";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper";
+import { NFT } from "./NFT";
 
 export const Nfts = () => {
 
@@ -21,53 +22,34 @@ export const Nfts = () => {
                     LIMITED EDITION <span>NFTS</span> :
                 </h1>
                 <Swiper
-                    effect={"coverflow"}
-                    grabCursor={true}
                     className={styles.swiper}
                     slidesPerView={3}
                     pagination={pagination}
                     centeredSlides={true}
                     loop={true}
+                    draggable={false}
                     autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
                     }}
-                    spaceBetween={170}
-                    coverflowEffect={{
-                        rotate: 0,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 1,
-                        slideShadows: true,
-                    }}
-                    modules={[EffectCoverflow, Pagination, Autoplay]}
-
+                    spaceBetween={80}
+                    modules={[Pagination, Autoplay]}
                 >
                     <SwiperSlide>
-                        <div className={styles.overlay}>ORDER NOW</div>
-                        <Image src="/assets/pizza.png" alt="nft1" width={350} height={800} />
+                        <NFT />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className={styles.overlay}>ORDER NOW</div>
-
-                        <Image src="/assets/pizza.png" alt="nft1" width={350} height={800} />
+                        <NFT />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className={styles.overlay}>ORDER NOW</div>
-
-                        <Image src="/assets/pizza.png" alt="nft1" width={350} height={800} />
+                        <NFT />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className={styles.overlay}>ORDER NOW</div>
-
-                        <Image src="/assets/pizza.png" alt="nft1" width={350} height={800} />
+                        <NFT />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className={styles.overlay}>ORDER NOW</div>
-
-                        <Image src="/assets/pizza.png" alt="nft1" width={350} height={800} />
+                        <NFT />
                     </SwiperSlide>
-
                 </Swiper>
             </div>
         </>
