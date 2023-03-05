@@ -43,6 +43,7 @@ const CartProvider = ({ children, setAuthed, setUser }) => {
     const getCheckoutCart = () => {
         let checkoutCart = {};
         Object.entries(cart).forEach(([productId, product]) => {
+            console.log(productId, product)
             checkoutCart[productId] = product.quantity;
         });
         return checkoutCart;

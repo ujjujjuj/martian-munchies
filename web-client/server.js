@@ -9,7 +9,7 @@ const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 app.prepare().then(async () => {
   const server = express();
-  // await sequelize.sync({ force: false });
+  await sequelize.sync({ force: true });
   // Handle all other requests
   server.all("*", (req, res) => {
     return handle(req, res);

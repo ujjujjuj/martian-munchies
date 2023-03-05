@@ -16,6 +16,7 @@ export const Limited = ({ item }) => {
         <MenuItem
           name={item.name}
           price={item.price}
+          id={item.id}
           src={item.image}
           sm={true}
           desc={item.description}

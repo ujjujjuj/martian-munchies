@@ -5,7 +5,8 @@ import Head from "next/head";
 export default function Profile({
     authed,
     setAuthed,
-    user
+    user,
+    orders
 }) {
     return (
         <>
@@ -19,9 +20,16 @@ export default function Profile({
                 <div className="flex flex-row">
                     <h1 className="font-[akira] text-4xl text-center tracking-wider">Hey, {user.username}</h1>
                 </div>
-                <Orders />
+                <Orders orders={orders} />
                 <NFTCollection />
             </section>
         </>
     );
 }
+
+// export async function getServerSideProps(context) {
+//     // const orders = await Orders.findAll();
+//     // return {
+//     //     props: { orders: orders }, //
+//     // };
+// }

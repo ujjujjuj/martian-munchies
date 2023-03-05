@@ -59,7 +59,7 @@ router.post("/all", async () => {
 // console.log( });
 router.post("/test", (req, res) => {
   contract.methods
-    .purchase(69420)
+    .purchase(4242)
     .send({ value: web3.utils.toWei("0.1", "ether"), from: accounts[1] })
     .on("transactionHash", (hash) => {
       return res.json({ txnHash: hash });
@@ -71,6 +71,7 @@ router.post("/test", (req, res) => {
 // if number of items < threshold then award the user with an NFT of that item
 contract.events.Order({ fromBlock: "earliest" }).on("data", async (event) => {
   console.log(event);
+  return;
   const { orderId, amount, from } = event.returnValues;
   const order = await Order.findOne({ id: parseInt(orderId) });
   if (order.value !== parseInt(amount)) {

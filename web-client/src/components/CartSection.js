@@ -2,15 +2,56 @@ import { CartContext } from "@/context/cartContext"
 import { useContext, useEffect, useRef, useState } from "react"
 import { AiOutlinePlus } from "react-icons/ai"
 import { CartItem } from "./CartItem"
+import Web3 from "web3";
+import contractInfo from "../../public/MartianMunchies.json";
+import { AppContext } from "@/context/authContext";
+import Link from "next/link";
+import axios from "axios";
 
-export const CartSection = () => {
-
-    const { cart } = useContext(CartContext)
+export const CartSection = ({
+    user
+}) => {
+    const web3 = new Web3(typeof (window) !== "undefined" ? window.ethereum : "");
+    const contract = new web3.eth.Contract(
+        contractInfo.abi,
+        // process.env.CONTRACT_ADDRESS
+        // "0x35fb836a07f089a23d9aa1304510c015c7a40e34"
+        "0xa95783b4dbae2b050e5680a6ad9e8418652aea76" // poly
+    );
+    const { cart, getCheckoutCart } = useContext(CartContext)
     const marsTax = useRef(42);
     const [prices, setPrices] = useState({
         amount: 0,
         tax: 0
     })
+
+    const [hash, setHash] = useState("");
+
+    const [loadingState, setLoadingState] = useState(0);
+
+    const { account, connectWallet, error } = useContext(AppContext);
+
+    const checkout = async () => {
+        const createOrder = async () => {
+            let res = await axios.post("http://128.128.8.251:5000/order/new", {
+                cart: getCheckoutCart(),
+                user: user.email
+            });
+            return res.data.id
+        }
+        let id = await createOrder();
+        const provider = await window.ethereum.enable();
+        setLoadingState(1);
+        const res = await contract.methods
+            .purchase(id)
+            .send({ value: web3.utils.toWei(((prices.amount + prices.tax + marsTax.current) / 100000).toString(), "ether"), from: provider[0] })
+            .on("transactionHash", (hash) => {
+                console.log({ txnHash: hash });
+                setHash(hash);
+                setLoadingState(2)
+            });
+    };
+
 
     useEffect(() => {
         const amount = Object.values(cart).reduce(
@@ -62,11 +103,15 @@ export const CartSection = () => {
                     <h1 className="text-lg tracking-[0.495em]">TOTAL</h1>
                     <h1 className="text-lg tracking-[0.13em]">{(prices.amount + prices.tax + marsTax.current).toFixed(2)} MATIC</h1>
                 </div>
-                <div className="bg-[#1D1D1D] text-center py-3 tracking-[0.21em] mt-5 w-[95%] mx-auto cursor-pointer hover:bg-black transition-all ease">
-                    CONFIRM AND CHECKOUT
+                <div onClick={checkout}
+                    className="bg-[#1D1D1D] text-center py-3 tracking-[0.21em] mt-5 w-[95%] mx-auto cursor-pointer hover:bg-black transition-all ease">
+                    {loadingState === 0 ? "CONFIRM AND CHECKOUT" : loadingState === 1 ? "PROCESSING..." : "SUCCESS"
+                    }
                 </div>
+                {loadingState === 2 ? <p className="text-center mt-4">
+                    We have received your order and will be processing it shortly.
+                    You can view your transition <Link className="underline" href={`https://mumbai.polygonscan.com/tx/${hash}`} target="_blank">here. </Link>
+                </p> : <></>}
             </div>
-        </section>
-
-    )
-}
+        </section>)
+};

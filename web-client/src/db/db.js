@@ -31,11 +31,7 @@ const User = sequelize.define(
     wallet: {
       type: Sequelize.STRING,
       allowNull: true,
-    },
-    // badges: {
-    //     type: Sequelize.ARRAY(Sequelize.STRING),
-    //     allowNull: true,
-    // }
+    }
   },
   {
     hooks: {
@@ -55,11 +51,11 @@ const Item = sequelize.define("Item", {
     primaryKey: true,
   },
   name: DataTypes.STRING,
-  image: DataTypes.STRING,
+  image: DataTypes.TEXT('long'),
   price: DataTypes.INTEGER,
   isLimitedEdition: DataTypes.BOOLEAN,
   supply: DataTypes.INTEGER,
-  description: DataTypes.TEXT,
+  description: DataTypes.TEXT('long'),
 });
 
 const NFT = sequelize.define("NFT", {

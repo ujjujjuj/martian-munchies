@@ -52,7 +52,7 @@ export default function Login({
                 type: 'error',
                 message: err.response.data.error,
             });
-        });;
+        });
     }
 
     useEffect(() => {
@@ -71,6 +71,12 @@ export default function Login({
                 console.log(res.data);
                 setUser(res.data.user);
                 router.replace("/profile");
+            }).catch((err) => {
+                console.log(err.response.data.error)
+                notyf.current.open({
+                    type: 'error',
+                    message: "Wallet not connected to any account",
+                });
             });
         } else if (authToken) {
             setAuthed(true);

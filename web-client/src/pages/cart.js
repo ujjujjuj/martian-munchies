@@ -1,10 +1,14 @@
 import { CartSection } from "@/components/CartSection";
 import Head from "next/head";
+import { useState } from "react";
+
 
 export default function Cart({
     authed,
-    setAuthed
+    setAuthed,
+    user
 }) {
+
     return (
         <>
             <Head>
@@ -13,7 +17,7 @@ export default function Cart({
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <CartSection />
+            <CartSection user={user} />
         </>
     )
 }
