@@ -7,10 +7,12 @@ import Cookies from 'js-cookie';
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import {default as _nfts} from "../../../nftdat.json";
 
 export default function Home({
   authed,
-  setAuthed
+  setAuthed,
+  nfts
 }) {
   return (
     <>
@@ -22,8 +24,15 @@ export default function Home({
       </Head>
       <Hero />
       <Mrq />
-      <Nfts />
+      <Nfts nfts={nfts} />
       <Footer />
     </>
   )
+}
+export async function getServerSideProps(context) {
+  // const items = await Item.findAll();
+
+  return {
+    props: { nfts: _nfts.items }, //
+  };
 }

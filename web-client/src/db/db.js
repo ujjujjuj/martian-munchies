@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize-cockroachdb";
+import { DataTypes } from "sequelize";
 import crypto from "crypto";
 const connectionString = process.env.DATABASE_URL;
 const sequelize = new Sequelize(connectionString, {
@@ -48,21 +49,42 @@ const User = sequelize.define(
   }
 );
 
-const Order = sequelize.define("Order", {
+const Item = sequelize.define("Item", {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.STRING,
     primaryKey: true,
   },
-  user_id: {
-    type: Sequelize.INTEGER,
+  name: DataTypes.STRING,
+  image: DataTypes.STRING,
+  price: DataTypes.INTEGER,
+  isLimitedEdition: DataTypes.BOOLEAN,
+  supply: DataTypes.INTEGER,
+  description: DataTypes.TEXT,
+});
+
+const NFT = sequelize.define("NFT", {
+  id: {
+    type: DataTypes.STRING,
+    primaryKey: true,
+  },
+  image: DataTypes.STRING,
+});
+
+const Order = sequelize.define("Order", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  user: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  total: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
+  cart: DataTypes.STRING,
+  isPaid: DataTypes.BOOLEAN,
+  value: DataTypes.INTEGER,
 });
 
 export default sequelize;
 
-export { User };
+export { User, Item, NFT, Order };

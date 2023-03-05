@@ -1,6 +1,6 @@
 import express from "express";
 import next from "next";
-import sequelize from './src/db/db.js';
+import sequelize from "./src/db/db.js";
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";

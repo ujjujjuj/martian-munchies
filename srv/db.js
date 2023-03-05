@@ -54,7 +54,7 @@ const Item = sequelize.define("Item", {
   name: DataTypes.STRING,
   image: DataTypes.STRING,
   price: DataTypes.INTEGER,
-  isLimitedEdtion: DataTypes.BOOLEAN,
+  isLimitedEdition: DataTypes.BOOLEAN,
   supply: DataTypes.INTEGER,
   description: DataTypes.TEXT,
 });
