@@ -82,6 +82,6 @@ const Order = sequelize.define("Order", {
   value: DataTypes.INTEGER,
 });
 
-sequelize.authenticate().then(() => sequelize.sync());
+// sequelize.authenticate().then(() => {sequelize.sync()});
 
 module.exports = { User, Order, Item, NFT };
