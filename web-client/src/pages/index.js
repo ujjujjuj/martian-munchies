@@ -1,3 +1,4 @@
+import { Explore } from '@/components/Explore';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
 import { Mrq } from '@/components/Marquee';
@@ -23,7 +24,7 @@ export default function Home({
       <Hero />
       <Mrq />
       <Nfts />
-      <Footer />
+      <Explore />
     </>
   )
 }

@@ -1,16 +1,18 @@
 import '@/styles/globals.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Cookies from "js-cookie";
-import AppProvider from './context/authContext';
+import AppProvider, { AppContext } from './context/authContext';
 import { Navbar } from '@/components/Navbar';
 import axios from 'axios';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
+import { useRouter } from 'next/router';
+import { Footer } from '@/components/Footer';
 
 export default function App({ Component, pageProps }) {
   const [authed, setAuthed] = useState("check");
   const [user, setUser] = useState({});
-
+  const router = useRouter();
   useEffect(() => {
     const notyf = new Notyf();
     const checkAuth = async () => {
@@ -36,8 +38,7 @@ export default function App({ Component, pageProps }) {
     checkAuth();
   }, []);
 
-
-  return (<AppProvider setAuthed={setAuthed}>
+  return (<AppProvider setAuthed={setAuthed} setUser={setUser}>
     <Navbar authed={authed} />
     <Component
       authed={authed}
@@ -46,5 +47,6 @@ export default function App({ Component, pageProps }) {
       setUser={setUser}
       {...pageProps}
     />
+    <Footer />
   </AppProvider>)
 }

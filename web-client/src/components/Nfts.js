@@ -23,32 +23,31 @@ export const Nfts = () => {
                 </h1>
                 <Swiper
                     className={styles.swiper}
-                    slidesPerView={3}
                     pagination={pagination}
-                    centeredSlides={true}
                     loop={true}
                     draggable={false}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    }}
                     spaceBetween={80}
-                    modules={[Pagination, Autoplay]}
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    modules={[Pagination]}
                 >
                     <SwiperSlide>
-                        <NFT />
+                        <NFT src="/assets/nft-1.png" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <NFT />
+                        <NFT src="/assets/nft-2.png" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <NFT />
+                        <NFT src="/assets/nft-3.png" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <NFT />
+                        <NFT src="/assets/nft-1.png" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <NFT />
+                        <NFT src="/assets/nft-2.png" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <NFT src="/assets/nft-3.png" />
                     </SwiperSlide>
                 </Swiper>
             </div>

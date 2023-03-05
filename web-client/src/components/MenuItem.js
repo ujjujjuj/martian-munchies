@@ -5,8 +5,8 @@ export const MenuItem = ({
 }) => {
     return (
         <>
-            <div className="flex flex-col justify-between items-center w-[20em] mx-auto relative px-12 bg-black py-5 mt-6 border-[#FFD747] border-[1px]">
-                <div className=" bg-black bg-opacity-80 w-[100.5%] opacity-0 hover:opacity-100 ease-in cursor-pointer transition-all -top-0.5 -bottom-0.5 text-center absolute mx-auto flex justify-center items-center z-10 font-medium tracking-[0.585em]">
+            <div className={`flex flex-col justify-between items-center  mx-auto relative px-12 bg-black py-5 mt-6 ${sm ? " border-[#FFD747] w-[20em]" : "w-full border-white"} border-[1px]`}>
+                <div className=" bg-black bg-opacity-80 w-[100.8%] opacity-0 hover:opacity-100 ease-in cursor-pointer transition-all -top-0.5 -bottom-0.5 text-center absolute mx-auto flex justify-center items-center z-10 font-medium tracking-[0.585em]">
                     ADD TO CART
                 </div>
                 <Image src={src} width={200} height={200} className="w-[90%] h-auto mb-4" />

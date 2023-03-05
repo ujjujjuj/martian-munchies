@@ -70,11 +70,11 @@ export default function Login({
                 setAuthed(true);
                 console.log(res.data);
                 setUser(res.data.user);
-                router.replace("/menu");
+                router.replace("/profile");
             });
         } else if (authToken) {
             setAuthed(true);
-            router.replace("/menu");
+            router.replace("/profile");
         }
     }, [account]);
 
