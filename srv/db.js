@@ -3,7 +3,10 @@ const { Sequelize } = require("sequelize");
 const { DataTypes } = require("sequelize-cockroachdb");
 const crypto = require("crypto");
 
-const sequelize = new Sequelize(process.env.DB_URL, { dialect: "postgres" });
+const sequelize = new Sequelize(process.env.DB_URL, {
+  dialect: "postgres",
+  logging: false,
+});
 
 const User = sequelize.define(
   "User",
@@ -51,7 +54,7 @@ const Item = sequelize.define("Item", {
   name: DataTypes.STRING,
   image: DataTypes.STRING,
   price: DataTypes.INTEGER,
-  isLimitedEdtion: DataTypes.BOOLEAN,
+  isLimitedEdition: DataTypes.BOOLEAN,
   supply: DataTypes.INTEGER,
   description: DataTypes.TEXT,
 });
@@ -66,16 +69,19 @@ const NFT = sequelize.define("NFT", {
 
 const Order = sequelize.define("Order", {
   id: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
   },
   user: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   cart: DataTypes.STRING,
+  isPaid: DataTypes.BOOLEAN,
+  value: DataTypes.INTEGER,
 });
 
-sequelize.authenticate().then(() => sequelize.sync());x
+sequelize.authenticate().then(() => sequelize.sync());
 
 module.exports = { User, Order, Item, NFT };

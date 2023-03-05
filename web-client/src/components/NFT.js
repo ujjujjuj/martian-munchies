@@ -1,9 +1,7 @@
 import Image from "next/image"
 import styles from "../styles/nfts.module.css"
 
-export const NFT = ({
-    src
-}) => {
+export const NFT = ({ src }) => {
     return (
         <div className={styles.nft}>
             <div className={styles.overlay}>ORDER NOW</div>

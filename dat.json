@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "ELON SHRIMP",
+      "image": "https://media.discordapp.net/attachments/756211731662897242/1081741093583978576/rceef.png?width=1246&height=1056",
+      "price": 999,
+      "isLimitedEdition": true,
+      "supply": 30,
+      "description": "Shrimps grown in Mars Environment very very tasty. Made in the most premium region of mars where hahaha."
+    },
+    {
+      "id": 2,
+      "name": "MARS SPECIAL",
+      "image": "https://media.discordapp.net/attachments/756211731662897242/1081741093093253130/ozMax_steak_of_a_thousand_flavours_a4093cb1-8e90-4519-93ce-202457e5d4f1-removebg-preview.png?width=1000&height=1000",
+      "price": 399,
+      "isLimitedEdition": false,
+      "supply": 30,
+      "description": "Nutrient-dense meal with protein, carbohydrates, and healthy fats to provide energy for space exploration."
+    },
+    {
+      "id": 3,
+      "name": "PHOEBE PIZZA",
+      "image": "https://media.discordapp.net/attachments/756211731662897242/1081741093307174942/SuleAI_pizza_with_chocolate_onion_tomato_lollypop_cheese_coffee_ef9b3b70-9d48-46c3-8360-c2e55975438a-removebg-preview.png?width=1000&height=1000",
+      "price": 249,
+      "isLimitedEdition": false,
+      "supply": 30,
+      "description": "High-quality pizza made with gourmet or artisanal ingredients, such as specialty cheeses, cured meats, fresh herbs, and organic produce, "
+    },
+    {
+      "id": 4,
+      "name": "MARI SUSHI",
+      "image": "https://media.discordapp.net/attachments/756211731662897242/1081741092497661983/fin1.png?width=1154&height=866",
+      "price": 589,
+      "isLimitedEdition": false,
+      "supply": 30,
+      "description": "Shrimps grown in Mars Environment very very tasty. Made in the most premium region of mars where hahaha."
+    },
+    {
+      "id": 5,
+      "name": "MARTIAN BOWL",
+      "image": "https://media.discordapp.net/attachments/756211731662897242/1081741092887724142/istockphoto-1322628932-612x612-removebg-preview.png?width=1000&height=1000",
+      "price": 469,
+      "isLimitedEdition": false,
+      "supply": 30,
+      "description": "Shrimps grown in Mars Environment very very tasty. Made in the most premium region of mars where hahaha."
+    },
+    {
+      "id": 6,
+      "name": "CRAPPER LOB",
+      "image": "https://media.discordapp.net/attachments/756211731662897242/1081741092669640774/fresh-lobster-food-on-a-white-plate-background-red-lobster-dinner-seafood-with-herb-spices-lemon-rosemary-served-table-in-the-restaurant-gourmet-food-healthy-boiled-lobster-cooked-free-photo-removebg-.png?width=1222&height=816",
+      "price": 389,
+      "isLimitedEdition": false,
+      "supply": 30,
+      "description": "Shrimps grown in Mars Environment very very tasty. Made in the most premium region of mars where hahaha."
+    },
+    {
+      "id": 7,
+      "name": "PHOBOS GOURMET",
+      "image": "https://media.discordapp.net/attachments/756211731662897242/1081741092262772766/carpaccio-with-parmesan-plate-isolated-white-background-gourmet-restaurant-food_221436-3839-removebg-preview.png?width=1224&height=816",
+      "price": 909,
+      "isLimitedEdition": false,
+      "supply": 30,
+      "description": "Shrimps grown in Mars Environment very very tasty. Made in the most premium region of mars where hahaha."
+    }
+  ]
+}

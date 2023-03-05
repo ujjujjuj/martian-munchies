@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from '../styles/profile.module.css';
-import { CartItem } from './CartItem';
 export const NFTCollection = () => {
     return (
         <div className='w-full mt-6 mb-10'>
